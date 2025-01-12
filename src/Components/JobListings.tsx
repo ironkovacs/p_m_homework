@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Header} from "./Header.tsx";
 import {JobCard} from "./JobCard.tsx";
 import {useState} from "react";
-import {Box, Container} from "@mui/material";
+import {Box} from "@mui/material";
 
 
 interface Job {
@@ -57,7 +57,7 @@ export const decodeHtmlEntities = (text: string): string => {
     return decoded || '';
 };
 
-const fetchJobs = async (jobGeo?: string, jobIndustry?: string, get?: 'location' | 'industries'): Promise<JobicyApi2Response> => {
+const fetchJobs = async (jobGeo?: string, jobIndustry?: string ): Promise<JobicyApi2Response> => {
     const params = new URLSearchParams();
     if (jobGeo) params.append('geo', jobGeo);
     if (jobIndustry) params.append('industry', jobIndustry);
@@ -72,10 +72,8 @@ const useJobs = (jobGeo?: string, jobIndustry?: string) => {
     return useQuery(
         ['jobs', jobGeo, jobIndustry],
         () => fetchJobs(jobGeo, jobIndustry),
-        {
-            staleTime: 600000,
-            enabled: true,
-        })
+        {staleTime: 600000,enabled: true,}
+    )
 }
 
 

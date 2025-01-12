@@ -7,7 +7,6 @@ import {
     Typography,
 
 } from "@mui/material";
-import {decodeHtmlEntities} from "./JobListings.tsx";
 
 export interface JobProps {
     url: string;
@@ -55,25 +54,12 @@ export const JobCard: React.FC<JobProps> = (
                         />
                         <Typography variant="subtitle1" align="center">{companyName}</Typography>
                     </Box>
-                    {/* --- JOB DETAILS --- */}
-
-                    <Typography variant="h4">
-                        {jobTitle} - {jobLevel}
-                    </Typography>
-
+                    <Typography variant="h4">{jobTitle} - {jobLevel}</Typography>
                 </Box>
-                <Typography variant="body1" color="textSecondary">
-                    Type: {jobType}
-                </Typography>
-                <Typography variant="body1" color="textSecondary">
-                    Industry: {jobIndustry}
-                </Typography>
-                <Typography variant="body1">
-                    Location: {jobGeo}
-                </Typography>
-                <Typography variant="body2" sx={{marginTop: "8px"}}>
-                    {jobExcerpt}
-                </Typography>
+                <Typography variant="body1" color="textSecondary">Type: {jobType}</Typography>
+                <Typography variant="body1" color="textSecondary">Industry: {jobIndustry}</Typography>
+                <Typography variant="body1">Location: {jobGeo}</Typography>
+                <Typography variant="body2" sx={{marginTop: "8px"}}>{jobExcerpt}</Typography>
                 <Link href={url}>Visit link to job</Link>
             </CardContent>
         </Card>)
